@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "telco-agent-lab"
+version = "0.1.0"
+description = "A synthetic telecom operations sandbox exposed as an MCP server."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Morten Teinum" }]
+dependencies = ["mcp==2.3.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[project.scripts]
+telco-agent-lab = "telco_agent_lab.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telco_agent_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
